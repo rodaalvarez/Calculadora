@@ -3,14 +3,17 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 
 
 interface IBtnProps {
-    text?: string;
+    text: string;
     color?: string;
     ancho?: boolean;
+    action: (textNumber : string)=> void;
 }
 
-const BtnCalculadora = ({ text, color, ancho = false} : IBtnProps) => {
+const BtnCalculadora = ({ text, color, ancho = false, action} : IBtnProps) => {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity
+        onPress={()=> action(text) }
+    >
         <View style={{
                 ...styles.button,
                 backgroundColor: color,
