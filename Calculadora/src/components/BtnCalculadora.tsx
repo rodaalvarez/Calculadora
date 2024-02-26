@@ -1,27 +1,31 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 
 
 interface IBtnProps {
-    text: string;
-    color: string;
+    text?: string;
+    color?: string;
+    ancho?: boolean;
 }
 
-const BtnCalculadora = ({ text, color } : IBtnProps) => {
+const BtnCalculadora = ({ text, color, ancho = false} : IBtnProps) => {
   return (
-    <View style={{
-            ...styles.button,
-            backgroundColor: color,
-        }}
-    >
-        <Text style={{
-                ...styles.btnText,
-                color: color === '#9B9B9B' ? 'black' : 'white'
+    <TouchableOpacity>
+        <View style={{
+                ...styles.button,
+                backgroundColor: color,
+                width: ancho ? 180 : 80
             }}
         >
-            {text}
-        </Text>
-    </View>
+            <Text style={{
+                    ...styles.btnText,
+                    color: color === '#9B9B9B' ? 'black' : 'white'
+                }}
+            >
+                {text}
+            </Text>
+        </View>
+    </TouchableOpacity>
   )
 }
 
